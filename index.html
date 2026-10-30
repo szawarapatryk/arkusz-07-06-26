@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gra</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    <header>
+        <h1>Zagraj w kółko i krzyżyk</h1>
+    </header>
+    <main>
+        <section id="left">
+            <h2>Gra kółko</h2>
+        </section>
+        <section id="center">
+            <table>
+                <tr>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                </tr>
+                <tr>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                </tr>
+                <tr>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                    <td><img src="nic.png" alt="nic"></td>
+                </tr>
+            </table>
+        </section>
+        <section id="right">
+            <h2>Gra krzyżyk</h2>
+        </section>
+    </main>
+    <footer>
+        <a href="https://pl.battleship-game.org/" target="_blank">Zagraj w statki</a>
+        <p>Grę opracował: 0000</p>
+    </footer>
+    <script>
+        let gracz = 1;
+        let pola = document.querySelectorAll("td");
+
+        pola.forEach(function(pole) {
+            pole.onclick = function() {
+                let obraz = pole.querySelector("img");
+                if (obraz.src.includes("nic.png")) {
+                    if (gracz == 1) {
+                        obraz.src = "o.png";
+                        obraz.alt = "kolko";
+                        document.querySelector("#left").style.display = "none";
+                        document.querySelector("#right").style.display = "block";
+                        gracz = 2;
+                    } else {
+                        obraz.src = "x.png";
+                        obraz.alt = "krzyzyk";
+                        document.querySelector("#left").style.display = "block";
+                        document.querySelector("#right").style.display = "none";
+                        gracz = 1;
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>
